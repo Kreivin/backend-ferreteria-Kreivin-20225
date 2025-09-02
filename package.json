@@ -1,4 +1,20 @@
 {
+  "name": "backend-ferreteria",
+"version": "1.0.0",
+  "description": "Backend para la gestión de una ferretería",
+  "main": "index.js",
+"scripts": {
+"test": "echo \"Error: no test specified\" && exit 1"
+},
+"keywords": [],
+"author": "Eliab Javier Selva Cruz",
+"license": "ISC"
+}
+
+
+
+{
+  
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
