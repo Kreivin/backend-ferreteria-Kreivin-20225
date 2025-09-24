@@ -46,3 +46,25 @@ error: error
 });
 }
 };
+
+// Eliminar categoria por id 
+export const eliminarCategoria = async (req, res)=> {
+    try{
+        const id_categoria = req.params.id_categoria;
+        const [result] = await pool.query('DELETE FROM cateegorias WHERE id_categoria = ?',[id_categoria]);
+
+        if (result.affectedRows === 0 ){
+            return res.status(404).json({
+            mensaje: `Error al eliminar la categoria. el ID ${id_categoria} no fue encontrado.`
+        });
+    }
+
+    //respuesta sin contenido para indicar exito
+res.status(204).send();
+}catch (error){
+    return res.status(500).json({
+        mensaje: 'Ha ocurrido un error al eliminar la categoria.',
+        error: error
+    });
+}
+};
