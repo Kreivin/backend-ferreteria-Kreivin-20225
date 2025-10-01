@@ -13,7 +13,7 @@ export const obtenerdetalles_compras = async (req, res) => {
 };
 
 
-// Obtener una clientes por su ID
+// Obtener una Detalle_Compra por su ID
 export const obtenerdetalles_compra = async (req, res) => {
 try {
     const id_detalles_compra = req.params.id_categoria;

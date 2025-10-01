@@ -53,3 +53,30 @@ res.status(204).send();
     });
 }
 };
+
+// Actualizar Cliente por ID
+export const actualizarCliente = async (req, res) => {
+    try{
+        const id_cliente = req.params.id_cliente;
+        const { nombre_cliente, descripcion_cliente } = req.body;
+
+        const [result] = await pool.query(
+            'UPDATE clientes SET nombre_cliente = IFNULL(?, nombre_cliente), descripcion_cliente = IFNULL(?, descripcion_cliente) WHERE id_cliente = ?',
+            [nombre_categoria, descripcion_cliente, id_cliente] 
+        );
+        if (result.affectedRows === 0){
+            return res.status(404).json({
+                mensaje: `Error al actualizar la cliente. El ID ${id_cliente} no fue encontrado.`
+            });
+        }
+        res.sendStatus(200).json({
+            mensaje:`Cliente con ID ${id_cliente} actualizado exitosamente.`
+        });
+    }catch (error){
+        return res.status(500).json({
+            mensaje: 'Ha ocurrido un error al actualizar la cliente.',
+            error: error
+        });
+    }
+};
+
