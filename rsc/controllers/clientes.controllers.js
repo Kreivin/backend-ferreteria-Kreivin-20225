@@ -32,6 +32,24 @@ mensaje: 'Ha ocurrido un error al leer los datos de las categorias.'
 };
 
 
+// Registrar un nuevo Clientes
+export const registrarCliente = async (req, res) => {
+try {
+const { primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula } = req.body;
+const [result] = await pool.query(
+'INSERT INTO categorias (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula) VALUES (?, ?, ?, ?, ?, ?, ?)',
+[primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, celular, direccion, cedula]
+);
+res.status(201).json({ id_cliente: result.insertId });
+} catch (error) {
+return res.status(500).json({
+mensaje: 'Ha ocurrido un error al registrar los clientes.',
+error: error
+});
+}
+};
+
+
 // Eliminar categoria por id 
 export const eliminarCliente = async (req, res)=> {
     try{
@@ -62,7 +80,7 @@ export const actualizarCliente = async (req, res) => {
 
         const [result] = await pool.query(
             'UPDATE clientes SET nombre_cliente = IFNULL(?, nombre_cliente), descripcion_cliente = IFNULL(?, descripcion_cliente) WHERE id_cliente = ?',
-            [nombre_categoria, descripcion_cliente, id_cliente] 
+            [nombre_cliente, descripcion_cliente, id_cliente] 
         );
         if (result.affectedRows === 0){
             return res.status(404).json({

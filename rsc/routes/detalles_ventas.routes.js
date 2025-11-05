@@ -1,24 +1,20 @@
 import { Router } from 'express';
-import { obtenerdetalles_ventas, obtenerdetalles_ventas, registrardetalles_ventas, eliminardetalles_ventas,actualizardetalles_ventas} from '../controllers/detalles_ventas.routes.js';
+import { obtenerDetalles_ventas, obtenerDetalle_venta, registrarDetalle_venta, eliminarDetalle_venta,actualizarDetalle_venta} from '../controllers/detalles_ventas.controllers.js';
 
 const router = Router();
 
 // Ruta para obtener todas los detalles_ventas
-router.get('/detalles_ventas', obtenerdetalles_ventas);
+router.get('/detalles_ventas', obtenerDetalles_ventas);
 
 // ruta para obtener una detalles_ventas por su ID
-router.get('/detalles_ventas/:id', obtenerdetalles_ventas);
+router.get('/detalle_venta/:id', obtenerDetalle_venta);
 
 // Ruta para registrar una nueva detalle_ventas
-router.post('/categoria', registrardetalles_ventas);
+router.post('/detalle_venta', registrarDetalle_venta);
 
 // ruta para eliminar una detalles_ventas por ID
-router.delete('/detalles_ventas/:id_detalles_ventas', eliminardetalles_ventas);
+router.delete('/detalle_venta/:id_detalle_venta', eliminarDetalle_venta);
 
+// Ruta para actualizar una detalles_ventas por su ID
+router.patch('/detalle_venta/:id_detalle_venta', actualizarDetalle_venta);
 export default router;
-
-// Ruta para actualizar una detalles_ventas por su ID
-router.put('/categoria/:id_detalles_ventas', actualizardetalles_ventas);
-
-// Ruta para actualizar una detalles_ventas por su ID
-router.patch('/categoria/:id_detalles_ventas', actualizardetalles_ventas);

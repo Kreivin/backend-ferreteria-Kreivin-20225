@@ -1,16 +1,16 @@
 import { Router } from 'express';
-import { obtenerProducto, obtenerProducto, registrarProducto, eliminarProducto,actualizarProducto} from '../controllers/Producto.routes.js';
+import { obtenerProductos, obtenerProducto, registrarProducto, eliminarProducto,actualizarProducto} from '../controllers/productos.controllers.js';
 
 const router = Router();
 
 // Ruta para obtener todas los Producto
-router.get('/productos', obtenerProducto);
+router.get('/productos', obtenerProductos);
 
 // ruta para obtener una Producto por su ID
-router.get('/productos/:id', obtenerProducto);
+router.get('/producto/:id', obtenerProducto);
 
 // Ruta para registrar una nueva detalle_ventas
-router.post('/categoria', registrarProducto);
+router.post('/producto', registrarProducto);
 
 // ruta para eliminar una Producto por ID
 router.delete('/producto/:id_producto', eliminarProducto);

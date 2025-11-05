@@ -25,7 +25,7 @@ mensaje: `Error al leer los datos. ID ${id_empleado} no encontrado.`
 res.json(result[0]);
 } catch (error) {
 return res.status(500).json({
-mensaje: 'Ha ocurrido un error al leer los datos de las empleados.'
+mensaje: 'Ha ocurrido un error al leer los datos de los empleados.'
 });
 }
 };
@@ -33,15 +33,15 @@ mensaje: 'Ha ocurrido un error al leer los datos de las empleados.'
 // Registrar una nueva Empleado
 export const registrarEmpleado = async (req, res) => {
 try {
-const { nombre_categoria, descripcion_categoria } = req.body;
+const { primer_nombre, segundo_nombre, primer_apellido,segundo_apellido, celular, cargo, fecha_contratacion } = req.body;
 const [result] = await pool.query(
-'INSERT INTO categorias (nombre_categoria, descripcion_categoria) VALUES (?, ?)',
+'INSERT INTO empleados (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, celular, cargo, fecha_contratacion) VALUES (?, ?, ?, ?, ?, ?, ?)',
 [ primer_nombre ,segundo_nombre ,primer_apellido ,segundo_apellido ,celular ,cargo, fecha_contratacion]
 );
 res.status(201).json({ id_empleado: result.insertId });
 } catch (error) {
 return res.status(500).json({
-mensaje: 'Ha ocurrido un error al registrar las Empleados.',
+mensaje: 'Ha ocurrido un error al registrar los Empleados.',
 error: error
 });
 }
@@ -55,7 +55,7 @@ export const eliminarEmpleado = async (req, res)=> {
 
         if (result.affectedRows === 0 ){
             return res.status(404).json({
-            mensaje: `Error al eliminar la empleado. el ID ${id_empleado} no fue encontrado.`
+            mensaje: `Error al eliminar el empleado. el ID ${id_empleado} no fue encontrado.`
         });
     }
 
@@ -86,11 +86,11 @@ export const actualizarEmpleado = async (req, res) => {
             });
         }
         res.status(200).json({
-            mensaje: `Empleado con ID ${id_empleado} actualizada exitosamente.`
+            mensaje: `Empleados con ID ${id_empleado} actualizada exitosamente.`
         });
     } catch (error) {
         return res.status(500).json({
-            mensaje: 'Ha ocurrido un error al actualizar la empleado.',
+            mensaje: 'Ha ocurrido un error al actualizar los empleados.',
             error: error
         });
     }
