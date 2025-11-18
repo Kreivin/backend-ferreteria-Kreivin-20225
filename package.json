@@ -1,28 +1,20 @@
 {
-  "name": "backend-ferreteria-20225",
+  "name": "backend-ferreteria-yaleska-2025",
   "version": "1.0.0",
-  "description": "Backend para la gestión de una ferretería",
-  "keywords": [],
-  "homepage": "https://github.com/Kreivin/backend-ferreteria-Kreivin-20225#readme",
-  "bugs": {
-    "url": "https://github.com/Kreivin/backend-ferreteria-Kreivin-20225/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kreivin/backend-ferreteria-Kreivin-20225.git"
-  },
-  "license": "ISC",
-  "author": "Kreivin Jesus Garcia Vega",
-  "type": "module",
+  "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "mysql2": "^3.15.0"
+    "mysql2": "^3.14.3",
+    "react-select": "^5.10.2"
   }
 }
